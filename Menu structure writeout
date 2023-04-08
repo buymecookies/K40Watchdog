@@ -4,7 +4,7 @@
   -temprature setpoints
       -set basin cooldown point
         -setpoint in ceslsius
-      -set basin max temp when lasering
+      -set basin max temp when using laser
         -setpoint in ceslsius
       -set  max inlet temrature
         -setpoint in ceslsius
