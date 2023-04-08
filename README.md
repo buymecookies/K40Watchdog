@@ -1,8 +1,11 @@
 # K40Watchdog
-k40 laser watchdog with picopi w & 8 relay module
+k40 laser watchdog for picopi w 
+
+Functions to build 
 
 - Lcd screen with rotary encoder.
-- Flow meter in + flow out detection
+- Flow meter yf-s201 with 
+- in + flow out detection
 - Lid protection ( front, rear, psu)
 - 3x temp sensor (in, ou , basin)
 - Laser enable output to k40 psu
