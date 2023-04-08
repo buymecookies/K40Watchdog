@@ -1,3 +1,5 @@
+This repository is under construction early beta stuff.
+
 # K40Watchdog
 k40 laser watchdog for picopi w 
 
