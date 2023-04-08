@@ -14,12 +14,14 @@ PIco PI W K40 laser watchdog with output &amp; 3 temp sensor
 |         | Temprature laser input  | adc              | thermistor                       |
 |         | Temprature laser output | adc              | thermistor                       |
 |         |                         |                  |                                  |
+
 | Status  | user inputs (buttons)   | gpio type        | Kind of hardware                 |
 |---------|-------------------------|------------------|----------------------------------|
 |         | start cooldown          | switch           |                                  |
 |         | standby for laser       | switch           | enable air assist & sucktion fan |
 |         | Lid override            | switch           | on /off Switch on panel          |
 |         |                         |                  |                                  |
+
 | Status  | Outputs                 | gpio type        | Kind of hardware                 |
 |---------|-------------------------|------------------|----------------------------------|
 |         | Laser enable            | Digital output   | Relay 5v + indicator light       |
@@ -36,6 +38,7 @@ PIco PI W K40 laser watchdog with output &amp; 3 temp sensor
 | HW done | rotary encoder switch   | digital input    |                                  |
 | HW done | rotary encoder knob     | 2x digital input |                                  |
 |         |                         |                  |                                  |
+
 | Status  | Type                    | gpio             | Kind of hardware                 |
 |---------|-------------------------|------------------|----------------------------------|
 |         | sda 20x4 i2c            |                0 |                                  |
