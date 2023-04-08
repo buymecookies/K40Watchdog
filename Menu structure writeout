@@ -1,0 +1,51 @@
+-mainscreen (info 3x temp sensor, status messages, mqtt connected symbol)
+
+-settings
+  -temprature setpoints
+      -set basin cooldown point
+        -setpoint in ceslsius
+      -set basin max temp when lasering
+        -setpoint in ceslsius
+      -set  max inlet temrature
+        -setpoint in ceslsius
+      -set max outlet temrature
+        -setpoint in ceslsius
+      -back to settings
+      
+  -Override menu
+    -override tempsensors
+      -on/off
+    -override flowsensor
+      -on/off
+    -back to settings
+   
+  -Beeper/alarm
+    -mute beeper
+       -on/off
+    -beep in menu
+       -on/off
+    -beep when cooled down
+      -on/off
+    -back to settings 
+    
+  -Mqtt presets
+    -when activate cooldown is on
+      -preset 1 turn light on 
+      -preset 2 turn light & computer on 
+      -preset 3 turn light & computer & screen on
+      -back to mqtt presets
+    
+    -when activate cooldown is off
+      -preset 1 turn light off
+      -preset 2 turn light & computer off 
+      -preset 3 turn light & computer & screen off
+      -back to mqtt presets
+ 
+    -when cooled down
+      -preset 1 (in - app notification)
+      -preseet 2 Lights in workspace flash blue 
+      -preset 3 Both 
+      -back to mqtt presets 
+    -back to settings 
+  -exit to main screen
+   
