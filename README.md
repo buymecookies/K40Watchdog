@@ -1,7 +1,5 @@
 # K40Watchdog
-PIco PI W K40 laser watchdog
-
-- Functions - 
+k40 laser watchdog with picopi w & 8 relay module
 
 - Lcd screen with rotary encoder.
 - Flow meter in + flow out detection
@@ -13,71 +11,45 @@ PIco PI W K40 laser watchdog
 - Fume removal control
 - waterflow control
 
-## Inputs
-| Status      | Name                    | gpio type        | Hardware                   |
-|-------------|-------------------------|------------------|----------------------------|
-|             | Lid front               | input            | endstop switch             |
-|             | Lid back                | input            | endstop switch             |
-|             | Lid psu                 | input            | endstop switch             |
-|             | waterflow out           | input            | Waterflow on off switch    |
-|             | start cooldown          | input            | on/off switch              |
-|             | standby for laser       | input            | on/off switch              |
-|             | Lid override            | input            | on/off switch              |
-| HW done     | rotary encoder switch   | digital input    | Rotary encoder module      |
-| HW done     | rotary encoder knob     | 2x digital input | Rotary encoder module      |
-| HW done     | waterflow in + liters   | input            | waterflow sensor           |
 
-## ADC
-| Status      | Name                    | gpio type        | Kind of hardware           |
-|-------------|-------------------------|------------------|----------------------------|
-|             | Temprature basin        | adc              | thermistor                 |
-|             | Temprature laser input  | adc              | thermistor                 |
-|             | Temprature laser output | adc              | thermistor                 |
+## i2c
+| Status          | Name                    | Gpio  | gpio type        | Kind of hardware           |
+|-----------------|-------------------------|------:|------------------|----------------------------|
+| Breadboard done | lcd screen              |     0 | i2c sda          | 20x4 i2c lcd screen        |
+| Breadboard done | lcd screen              |     1 | i2c scl          | 20x4 i2c lcd screen        |
+|                 |                         |       |                  |                            |
+
+## inputs
+| Status          | Name                    | Gpio  | gpio type        | Hardware                   |
+|-----------------|-------------------------|------:|------------------|----------------------------|
+| Breadboard done | rotary encoder switch   |     2 | digital input    | Rotary encoder module      |
+| Breadboard done | rotary encoder knob     |   3&4 | 2x digital input | Rotary encoder module      |
+|                 | Lid front               |     5 | input            | endstop switch             |
+|                 | Lid back                |     6 | input            | endstop switch             |
+|                 | Lid psu                 |     7 | input            | endstop switch             |
+|                 | waterflow out           |     8 | input            | Waterflow on off switch    |
+|                 | start cooldown          |     9 | input            | on/off switch              |
+|                 | standby for laser       |    10 | input            | on/off switch              |
+|                 | Lid override            |    11 | input            | on/off switch              |
+| Breadboard done | waterflow in + liters   |    21 | input            | waterflow sensor           |
+
 
 ## outputs
-| Status      | Name                    | gpio type        | Kind of hardware           |
-|-------------|-------------------------|------------------|----------------------------|
-|             | Laser enable            | Digital output   | Relay 5v + indicator light |
-|             | 230v compressor on      | Digital output   | Relay 5v                   |
-|             | Air assist on           | Digital output   | Relay 5v                   |
-|             | air suction on          | Digital output   | Relay 5v                   |
-|             | Waterpump cooling       | Digital output   | Relay 5v                   |
-|             | waterpump tube          | Digital output   | Relay 5v                   |
-|             | waterswitch             | Digital output   | Relay 5v                   |
-|             | spare                   | Digital output   | Relay 5v                   |
+| Status          | Name                    | Gpio  | gpio type        | Kind of hardware           |
+|-----------------|-------------------------|------:|------------------|----------------------------|
+|                 | Laser enable            |    13 | Digital output   | Relay 5v + indicator light |
+|                 | 230v compressor on      |    14 | Digital output   | Relay 5v                   |
+|                 | Air assist on           |    15 | Digital output   | Relay 5v                   |
+|                 | air suction on          |    16 | Digital output   | Relay 5v                   |
+|                 | Waterpump cooling       |    17 | Digital output   | Relay 5v                   |
+|                 | waterpump tube          |    18 | Digital output   | Relay 5v                   |
+|                 | waterswitch             |    19 | Digital output   | Relay 5v                   |
+|                 | Cooling on              |    20 | Digital output   | Relay 5v                   |
+|                 |                         |       |                  |                            |
 
-## I2c
-| Status      | Name                    | gpio type        | Kind of hardware           |
-|-------------|-------------------------|------------------|----------------------------|
-| HW done     | lcd screen              | i2c sda          | 20x4 i2c lcd screen        |
-| HW done     | lcd screen              | i2c scl          | 20x4 i2c lcd screen        |
-
-## GPIO
-| Status      | Name                    | gpio type        | Kind of hardware           |
-|-------------|-------------------------|------------------|----------------------------|
-| testcondone | sda 20x4 i2c            |                0 |                            |
-| testcondone | scl 20x4 i2c            |                1 |                            |
-| testcondone | Button encoder          |                2 |                            |
-| testcondone | encoder A               |                3 |                            |
-| testcondone | Encoder B               |                4 |                            |
-|             |                         |                5 |                            |
-|             |                         |                6 |                            |
-|             |                         |                7 |                            |
-|             |                         |                8 |                            |
-|             |                         |                9 |                            |
-|             |                         |               10 |                            |
-|             |                         |               11 |                            |
-|             |                         |               12 |                            |
-|             |                         |               13 |                            |
-|             |                         |               14 |                            |
-|             |                         |               15 |                            |
-|             |                         |               16 |                            |
-|             |                         |               17 |                            |
-|             |                         |               18 |                            |
-|             |                         |               19 |                            |
-|             |                         |               20 |                            |
-|             | waterflow sensor        |               21 |                            |
-|             |                         |               22 |                            |
-|             | temp basin              |               26 |                            |
-|             | temp laser out          |               27 |                            |
-|             | temp laser in           |               28 |                            |
+## ADC
+| Status          | Name                    | Gpio  | gpio type        | Kind of hardware           |
+|-----------------|-------------------------|------:|------------------|----------------------------|
+|                 | Temprature basin        |    26 | adc              | thermistor                 |
+|                 | Temprature laser input  |    27 | adc              | thermistor                 |
+|                 | Temprature laser output |    28 | adc              | thermistor                 |
