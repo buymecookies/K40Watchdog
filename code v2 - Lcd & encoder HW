@@ -22,35 +22,126 @@ button.switch_to_input(pull=digitalio.Pull.DOWN)
 #pin_counter = countio.Counter(board.GP21, edge=countio.Edge.RISE)
 #flow_frequency = 0
 
+# gpio expander outputs
+
 
 while True:
     position=enc.position
-    selector = 0
     if position == 0:
         lcd.set_cursor_pos(0, 1)
-        lcd.print("#left")
+        lcd.print("#temp")
+        lcd.set_cursor_pos(1, 2)
+        lcd.print("test")
+        lcd.set_cursor_pos(2, 2)
+        lcd.print("code")
+        lcd.set_cursor_pos(3, 2)
+        lcd.print("mothafucker")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
     if position == 1:
+        lcd.set_cursor_pos(0, 2)
+        lcd.print("temp")
         lcd.set_cursor_pos(1, 1)
         lcd.print("#test")
+        lcd.set_cursor_pos(2, 2)
+        lcd.print("code")
+        lcd.set_cursor_pos(3, 2)
+        lcd.print("mothafucker")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
     if position == 2:
-        lcd.set_cursor_pos(2, 1)
+        lcd.set_cursor_pos(0, 2)
+        lcd.print("temp")
+        lcd.set_cursor_pos(1, 1)
         lcd.print("#code")
+        lcd.set_cursor_pos(2, 2)
+        lcd.print("motherfucker")
+        lcd.set_cursor_pos(3, 2)
+        lcd.print("opensource")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
     if position == 3:
-        lcd.set_cursor_pos(3, 1)
+        lcd.set_cursor_pos(0, 2)
+        lcd.print("code")
+        lcd.set_cursor_pos(1, 1)
         lcd.print("#motherfucker")
+        lcd.set_cursor_pos(2, 2)
+        lcd.print("opensource")
+        lcd.set_cursor_pos(3, 2)
+        lcd.print("bitch")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
+    if position == 4:
+        lcd.set_cursor_pos(0, 2)
+        lcd.print("motherfucker")
+        lcd.set_cursor_pos(1, 1)
+        lcd.print("#opensource")
+        lcd.set_cursor_pos(2, 2)
+        lcd.print("bitch")
+        lcd.set_cursor_pos(3, 2)
+        lcd.print("monster")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
+    if position == 5:
+        lcd.set_cursor_pos(0, 2)
+        lcd.print("motherfucker")
+        lcd.set_cursor_pos(1, 2)
+        lcd.print("opensource")
+        lcd.set_cursor_pos(2, 1)
+        lcd.print("#bitch")
+        lcd.set_cursor_pos(3, 2)
+        lcd.print("monster")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
+    if position == 6:
+        lcd.set_cursor_pos(0, 2)
+        lcd.print("motherfucker")
+        lcd.set_cursor_pos(1, 2)
+        lcd.print("opensource")
+        lcd.set_cursor_pos(2, 2)
+        lcd.print("bitch")
+        lcd.set_cursor_pos(3, 1)
+        lcd.print("#monster")
+        lastPosition = position
+        if lastPosition != position:
+            pass
+        else:
+            time.sleep (1)
+            print(position)
         
-    
-    
-    lcd.set_cursor_pos(0, 2)
-    lcd.print("left")
-    lcd.set_cursor_pos(1, 2)
-    lcd.print("test")
-    lcd.set_cursor_pos(2, 2)
-    lcd.print("code")
-    lcd.set_cursor_pos(3, 2)
-    lcd.print("mothafucker")
-    time.sleep(0.7)
+   # while lastPosition == position:
+      #  time.sleep (0.2)
+        
     lcd.clear()
+    
+    
+    
+    
+    
     
 
 
@@ -69,3 +160,4 @@ while True:
 
 #time.sleep(5)
 #lcd.clear()
+
