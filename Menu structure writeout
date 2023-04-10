@@ -13,12 +13,17 @@
       -back to settings
       
   -Override menu
+     -override lids
+      front disabled
+      back disabled
+      psu disabled
     -override tempsensors
       -on/off
-    -override flowsensor
-      -on/off
+    -override flow sensors
+      ( ) in disabled
+      ( ) out disabled
     -back to settings
-   
+    
   -Beeper/alarm
     -mute beeper
        -on/off
