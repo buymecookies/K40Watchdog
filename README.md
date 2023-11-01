@@ -30,28 +30,29 @@ Functions to build
 |-----------------|-------------------------|------:|------------------|----------------------------|
 | Breadboard done | rotary encoder switch   |     2 | digital input    | Rotary encoder module      |
 | Breadboard done | rotary encoder knob     |   3&4 | 2x digital input | Rotary encoder module      |
-|                 | Lid front               |     5 | input            | endstop switch             |
-|                 | Lid back                |     6 | input            | endstop switch             |
-|                 | Lid psu                 |     7 | input            | endstop switch             |
-|                 | waterflow out           |     8 | input            | Waterflow on off switch    |
-|                 | start cooldown          |     9 | input            | on/off switch              |
-|                 | standby for laser       |    10 | input            | on/off switch              |
-|                 | Lid override            |    11 | input            | on/off switch              |
+
+| Breadboard done | Lid front               |   enable  5 | input            | endstop switch             |
+| Breadboard done | Lid back                |     6 | input            | endstop switch             |
+| Breadboard done | Lid psu                 |     7 | input            | endstop switch             |
+| Breadboard done | Lid override            |     8 | input            | on/off switch              |
+
+| Breadboard done | prepare                 |     9 | input            | on/off switch              |
+| Breadboard done | start lasering          |    10 | input            | on/off switch              |
+
 | Breadboard done | waterflow in + liters   |    21 | input            | waterflow sensor           |
 
 
 ## outputs
-| Status          | Name                    | Gpio  | gpio type        | hardware                   |
+| Status          | Name                    | Gpio  | gpio type        | object                     |
 |-----------------|-------------------------|------:|------------------|----------------------------|
-|                 | Laser enable            |    13 | Digital output   | dry contact                |
-|                 | 230v compressor         |    14 | Digital output   | 230v control               |
-|                 | Air assist              |    15 | Digital output   | solenoid                   |
-|                 | air suction   m         |    16 | Digital output   | 230v control               |
-|                 | Waterpump cooling       |    17 | Digital output   | 230v control               |
-|                 | waterpump tube          |    18 | Digital output   | 230v control               |
-|                 | water flow switch a-b   |    19 | Digital output   | relay 12v                  |
-|                 | Cooling on              |    20 | Digital output   | dry contact                |
-|                 | buzzer                  |    22 | Digital output   | piezo buzzer               |
+| Breadboard done | Laser enable            |    13 | Digital output   | enable                     |
+| Breadboard done | 230v compressor         |    14 | Digital output   | comp230v                   |
+| Breadboard done | chiller on              |    15 | Digital output   | chiller                    |
+| Breadboard done | Waterpump cooling       |    16 | Digital output   | coolPump                   |
+| Breadboard done | ventilation             |    17 | Digital output   | vent                       |
+| Breadboard done | waterpump laser tube    |    18 | Digital output   | tubePump                   |
+| Breadboard done | Air assist              |    19 | Digital output   | airAss                     |
+
 
 ## ADC
 | Status          | Name                    | Gpio  | gpio type        | hardware                   |
