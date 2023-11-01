@@ -1,0 +1,143 @@
+# This script supports the Raspberry Pi Pico board
+# Raspberry Pi Pico: http://educ8s.tv/part/RaspberryPiPico
+# 20x4 I2C DISPLAY: http://educ8s.tv/part/20x4LCD
+
+
+import board, busio, time, rotaryio, digitalio, countio
+
+from lcd.lcd import LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+
+###### lcd settings ######
+sda, scl = board.GP0, board.GP1
+i2c = busio.I2C(scl, sda)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=4, num_cols=20) #If address 0x27 does not work try 0x3F
+
+###### encoder settings ######
+enc= rotaryio.IncrementalEncoder(board.GP3, board.GP4, 4 )
+button = digitalio.DigitalInOut(board.GP2)
+button.switch_to_input(pull=digitalio.Pull.DOWN)
+
+###### Flowmeter in settings ######
+pin_counter = countio.Counter(board.GP21, edge=countio.Edge.RISE)
+
+###### gpio outputs ######
+#laser enable
+enable = digitalio.DigitalInOut(board.GP13)
+enable.direction = digitalio.Direction.OUTPUT
+
+# 230v compressor
+comp230v = digitalio.DigitalInOut(board.GP14)
+comp230v.direction = digitalio.Direction.OUTPUT
+
+# Chiller on
+chiller = digitalio.DigitalInOut(board.GP15)
+chiller.direction = digitalio.Direction.OUTPUT
+
+# cooling waterpump
+coolPump = digitalio.DigitalInOut(board.GP16)
+coolPump.direction = digitalio.Direction.OUTPUT
+
+# Ventilation
+vent = digitalio.DigitalInOut(board.GP17)
+vent.direction = digitalio.Direction.OUTPUT
+
+# lasertube waterpump
+tubePump = digitalio.DigitalInOut(board.GP18)
+tubePump.direction = digitalio.Direction.OUTPUT
+
+# air assist
+airAss = digitalio.DigitalInOut(board.GP19)
+airAss.direction = digitalio.Direction.OUTPUT
+
+# spare
+spare = digitalio.DigitalInOut(board.GP20)
+spare.direction = digitalio.Direction.OUTPUT
+
+
+###### gpio inputs ######
+# front lid
+frontlid = digitalio.DigitalInOut(board.GP5)
+frontlid.switch_to_input(pull=digitalio.Pull.UP)
+
+# back lid 
+backlid = digitalio.DigitalInOut(board.GP6)
+backlid.switch_to_input(pull=digitalio.Pull.UP)
+
+# PSu lid 
+psulid = digitalio.DigitalInOut(board.GP7)
+psulid.switch_to_input(pull=digitalio.Pull.UP)
+
+# override lid 
+overridelid = digitalio.DigitalInOut(board.GP8)
+overridelid.switch_to_input(pull=digitalio.Pull.UP)
+
+# prepare
+prepare = digitalio.DigitalInOut(board.GP9)
+prepare.switch_to_input(pull=digitalio.Pull.UP)
+
+# start 
+start = digitalio.DigitalInOut(board.GP10)
+start.switch_to_input(pull=digitalio.Pull.UP)
+
+def outputcycle (state):
+    enable.value = state
+    time.sleep (0.2)
+    comp230v.value = state
+    time.sleep (0.2)
+    chiller.value = state
+    time.sleep (0.2)
+    coolPump.value = state
+    time.sleep (0.2)
+    vent.value = state
+    time.sleep (0.2)
+    tubePump.value = state
+    time.sleep (0.2)
+    airAss.value = state
+    time.sleep (0.2)
+    spare.value = state
+    time.sleep (0.2)
+
+
+
+def getname (x):
+    global_dict=globals()
+    for key, value in global_dict.items():
+        if value == x: 
+            return key 
+
+def menu (pos1, pos2, pos3,  pos4):
+    lcd.clear()
+    lcd.set_cursor_pos(0, 0)
+    pos1_name=getname(pos1)
+    lcd.print(str(position)+str(pos1_name)+": "+str(pos1.value))
+    lcd.set_cursor_pos(1, 0)
+    pos2_name=getname(pos2)
+    lcd.print(str(pos2_name)+": "+str(pos2.value))
+    lcd.set_cursor_pos(2, 0)
+    pos3_name=getname(pos3)
+    lcd.print(str(pos3_name)+": "+str(pos3.value))
+    lcd.set_cursor_pos(3, 0)
+    pos4_name=getname(pos4)
+    lcd.print(str(pos4_name)+": "+str(pos4.value))
+
+
+
+
+while True:
+    if button.value == True :
+        outputcycle (True)
+    if button.value == False :
+        outputcycle (False)
+
+    position=enc.position
+    if position == 1:
+        menu(pos1=frontlid, pos2=backlid, pos3=psulid, pos4=overridelid)
+    if position == 2:
+        menu(pos1=backlid, pos2=psulid, pos3=overridelid, pos4=prepare)
+    if position == 3:
+        menu(pos1=psulid, pos2=overridelid, pos3=prepare, pos4=start)
+    #if position == 4:
+        #menu(pos1=overridelid, pos2=prepare, pos3=start, pos4=pin_counter)    
+                    
+    time.sleep(0.5) 
